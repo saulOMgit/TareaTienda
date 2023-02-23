@@ -1,0 +1,50 @@
+
+/* Efecto de volteo de carta */
+/*todo el contenido de cada juego*/
+ .juego{ 
+    width: 300px;
+    height: 450px;
+    border: 1px solid grey;
+    /* Esto nos daria efecto 3D */
+    perspective: 1000px;
+}
+
+.cartaposicion{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    /*  */
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+/* Efecto de rotado horizontal */
+.juego:hover .cartaposicion:hover{
+    transform: rotateY(180deg);
+}
+
+/* posicionamiento propio para font y back */
+.cartafront, .cartaback{
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.cartafront{
+    background-color: rgb(60, 60, 60);
+}
+
+.cartaback{
+    background-color: rgb(225, 186, 138);
+    transform: rotateY(180deg);
+}
+/* Acaba el efecto volteo de carta */
+
+.spnombre,.spgenero,.spunidades,.spprecio{
+    display: block;
+}
+.spnombre{    
+    font-size: 2em;
+}

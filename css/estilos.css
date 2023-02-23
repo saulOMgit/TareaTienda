@@ -1,0 +1,8 @@
+.contenedor{
+    /* https://developer.mozilla.org/es/docs/Web/CSS/CSS_Grid_Layout */
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    /* obsoleta */
+    grid-gap:10px;
+    grid-auto-rows: (100px,auto);
+}
