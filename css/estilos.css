@@ -1,8 +1,21 @@
-.contenedor{
+.titulo{
+    grid-area: titulo;
+}
+
+.enlace{
+    grid-area: enlace;
+}
+.contenido{
     /* https://developer.mozilla.org/es/docs/Web/CSS/CSS_Grid_Layout */
     display: grid;
-    grid-template-columns: repeat(2,1fr);
-    /* obsoleta */
-    grid-gap:10px;
-    grid-auto-rows: (100px,auto);
+    /* grid-template-columns: [first] 40px [col2] 200px [colcentro] auto [col4-start] 200px [five] 40px [end];
+    grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-line]; */    
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 25% 25% 25% 25%;
+    grid-template-areas:
+        ". . . ."
+        ". titulo . ."
+        ". . . ."
+        ". . enlace .";
+    
 }
