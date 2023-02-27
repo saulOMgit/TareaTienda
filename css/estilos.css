@@ -9,13 +9,44 @@
     /* https://developer.mozilla.org/es/docs/Web/CSS/CSS_Grid_Layout */
     display: grid;
     /* grid-template-columns: [first] 40px [col2] 200px [colcentro] auto [col4-start] 200px [five] 40px [end];
-    grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-line]; */    
-    grid-template-columns: 25% 25% 25% 25%;
-    grid-template-rows: 25% 25% 25% 25%;
+    grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-line]; 100px 100px 100px 100px*/
+    height: 100%;   
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    
     grid-template-areas:
         ". . . ."
         ". titulo . ."
         ". . . ."
         ". . enlace .";
-    
+
+    /* prueba centrado */
+        position: absolute; /*Can also be `fixed`*/
+        left: 50px;
+        right: 50px;
+        top: 50px;
+        bottom: 50px;
+        margin: auto;
+    /* fin prueba centrado */
+        
+}
+
+body{
+    background:url("../img/planet.jpg");
+    background-size:cover;
+}
+
+.contenido{
+    background-color: rgba(192, 133, 240, 0.496);
+}
+
+.enlace{
+    font-size: 24px;
+    margin-top: 150px;
+}
+
+@media only screen and (max-width: 600px) {
+    .enlace{
+        margin-top: 50px;
+    }
 }
