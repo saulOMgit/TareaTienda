@@ -69,5 +69,36 @@
         "moneda":"€",
         "descuento":30
     }
+    ,
+    {        
+        "id":8,
+        "nombre":"Crisis Core",
+        "genero":"RPG",
+        "foto":"crisiscore.png",
+        "unidades":10,
+        "precio":"49,99",
+        "moneda":"€",
+        "descuento":10
+    },
+    {        
+        "id":9,
+        "nombre":"Hi-Fi Rush",
+        "genero":"Aventuras",
+        "foto":"hifirush.png",
+        "unidades":7,
+        "precio":"29,99",
+        "moneda":"€",
+        "descuento":0
+    },
+    {        
+        "id":10,
+        "nombre":"Hollow Knight Silksong",
+        "genero":"Metroidvania",
+        "foto":"hollow.png",
+        "unidades":0,
+        "precio":"39,99",
+        "moneda":"€",
+        "descuento":0
+    }
     
 ]

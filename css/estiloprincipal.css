@@ -1,4 +1,10 @@
-
+*{
+    margin: 0;
+    padding: 0;
+}
+.todo{
+    overflow-x: hidden;
+} 
 /* Efecto de volteo de carta */
 /*todo el contenido de cada juego*/
  .juego{ 
@@ -88,17 +94,38 @@
     color: black;
   }
 
+  .cartaback{
+    position: relative;
+  }
+  .spcomprar{
+    
+    background-color: red;
+    color: white;
+    font-size: 24px;
+    position: absolute;
+    top: 200px;
+    right: 100px;
+    padding: 5px;
+  }
 
+  .spcomprar:hover{
+    background-color: rgb(190, 1, 1);
+  }
+
+  .cartafront img{
+    padding-top: 10px;
+    border-radius: 10%;
+  }
+  
   @media only screen and (max-width: 600px) {
-    *{
-        overflow: hidden;
-    }
+     
     .contenido {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         align-items: center;
   justify-items: center; 
     }
+      
     .juego{
         margin-left: 0 auto;
         margin-right: 0 auto;

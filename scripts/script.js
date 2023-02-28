@@ -53,6 +53,11 @@ window.onload = function (){
             spprecio.textContent=juego.precio+juego.moneda;
             divback.appendChild(spprecio);
 
+            let spcomprar=document.createElement("span");
+            spcomprar.className="spcomprar";
+            spcomprar.textContent="Comprar";
+            divback.appendChild(spcomprar);
+
             //Apendeamos todo
             divposicion.appendChild(divfront);
             divposicion.appendChild(divback);

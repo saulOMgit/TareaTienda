@@ -32,12 +32,12 @@
 }
 
 body{
-    background:url("../img/planet.jpg");
-    background-size:cover;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(133,52,255,1) 46%, rgba(255,255,255,1) 100%); 
 }
 
 .contenido{
-    background-color: rgba(192, 133, 240, 0.496);
+    background-color: rgba(192, 133, 240, 0.163);
 }
 
 .enlace{
