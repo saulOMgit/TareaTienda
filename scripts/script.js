@@ -10,9 +10,6 @@ window.onload = function (){
 
     function imprimir(juegos){
 
-        
-
-
         for(let juego of juegos){
             let divjuego=document.createElement("div");
             divjuego.className="juego";
@@ -68,16 +65,43 @@ window.onload = function (){
     }
 
     cargaJuegos();
+    // misproductos = localStorage.getItem('miCarro');
+    // console.log(misproductos);
+    // if (!misproductos){
     misproductos= new Map();
+    //}
     function comprar(){
         
         let nombrejuego=this.parentNode.children[0].textContent;
         var preciojuego=this.parentNode.children[3].textContent;
         preciojuego=preciojuego.substring(0,preciojuego.length-1);
-        preciojuego = parseFloat(preciojuego).toFixed(2);
+        preciojuego = parseFloat(preciojuego,2);
+        
+        let juegocomprado = {
+            nombre: nombrejuego,
+            precio:preciojuego
+        }
+
+        // console.log(juegocomprado.nombre+" "+juegocomprado.precio);
+        if (misproductos.has(nombrejuego)){
+            let datosanteriores= misproductos.get(nombrejuego).precio;
+            juegocomprado.precio+=datosanteriores;
+            misproductos.set(nombrejuego,juegocomprado);
+        } else{
+             misproductos.set(nombrejuego,juegocomprado);
+        }
        
-        console.log(nombrejuego+" "+preciojuego);
-        // misproductos.set()
+         for ([juego,objeto] of misproductos){
+             console.log(juego+" "+objeto.precio);
+         }
+
+        // localStorage.setItem('miCarro', misproductos);
+        // let prueba = localStorage.getItem('miCarro')
+        // console.log(typeof prueba)
+        //  for ([juego,objeto] of prueba){
+        //      console.log(juego+" "+objeto.precio);
+        //  }
+
     }
 
 }
