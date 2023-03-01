@@ -56,6 +56,7 @@ window.onload = function (){
             let spcomprar=document.createElement("span");
             spcomprar.className="spcomprar";
             spcomprar.textContent="Comprar";
+            spcomprar.addEventListener("click",comprar);
             divback.appendChild(spcomprar);
 
             //Apendeamos todo
@@ -67,5 +68,16 @@ window.onload = function (){
     }
 
     cargaJuegos();
+    misproductos= new Map();
+    function comprar(){
+        
+        let nombrejuego=this.parentNode.children[0].textContent;
+        var preciojuego=this.parentNode.children[3].textContent;
+        preciojuego=preciojuego.substring(0,preciojuego.length-1);
+        preciojuego = parseFloat(preciojuego).toFixed(2);
+       
+        console.log(nombrejuego+" "+preciojuego);
+        // misproductos.set()
+    }
 
 }
