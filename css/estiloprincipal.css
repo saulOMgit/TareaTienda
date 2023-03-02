@@ -117,6 +117,23 @@
     padding-top: 10px;
     border-radius: 10%;
   }
+
+  /* PRUEBA DIV CARRITO */
+  .divcarrito{
+    position: fixed;
+    top: 5%;
+    left: 70%;
+    width: 25%;
+    height: 50%;
+    background-color: tomato;
+    z-index: 2;
+    transform: translateX(-400%);
+    transition: .5s ease-out;
+  }
+
+  .divcarritoin{
+    transform: translateX(0px);
+  }
   
   @media only screen and (max-width: 600px) {
      

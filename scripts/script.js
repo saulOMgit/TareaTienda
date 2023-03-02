@@ -74,12 +74,17 @@ window.onload = function (){
         
         let nombrejuego=this.parentNode.children[0].textContent;
         var preciojuego=this.parentNode.children[3].textContent;
-        preciojuego=preciojuego.substring(0,preciojuego.length-1);
-        preciojuego = parseFloat(preciojuego,2);
         
+        preciojuego=preciojuego.substring(0,preciojuego.length-1);
+
+        preciojuego = parseFloat(preciojuego.replace(",","."),2);
+        console.log(preciojuego);
+        
+
         let juegocomprado = {
             nombre: nombrejuego,
-            precio:preciojuego
+            precio:preciojuego,
+            cantidad:0
         }
 
         // console.log(juegocomprado.nombre+" "+juegocomprado.precio);
@@ -104,4 +109,11 @@ window.onload = function (){
 
     }
 
+    let botonCarrito=document.querySelector(".refcarrito")
+    botonCarrito.addEventListener("click",muestraCarrito);
+
+    function muestraCarrito(){
+        let divcarrito=document.querySelector(".divcarrito");
+        divcarrito.classList.toggle("divcarritoin");
+    }
 }
