@@ -97,17 +97,18 @@ window.onload = function (){
             juegocomprado.cantidad=misproductos.get(nombrejuego).cantidad+1;
             
             misproductos.set(nombrejuego,juegocomprado);
-            let spcantidad2=document.querySelector(".cantidad");
+            let spcantidad2=document.querySelector(`.${nombrejuego.replaceAll(" ","")}cantidad`);
             spcantidad2.textContent=parseInt(spcantidad2.textContent)+1;
         } else{
              misproductos.set(nombrejuego,juegocomprado);
-
+            let divproductos=document.querySelector(".productos");
              let productocarrito=document.createElement("div");
              productocarrito.classList.add("productocarrito");
              let myimg=document.createElement("img");
                 myimg.src=caratula;
              let spnombre=document.createElement("span");
              spnombre.textContent=nombrejuego;
+             spnombre.classList.add("titulocarrito");
 
              let spprecio=document.createElement("span");
              spprecio.textContent=juegocomprado.precio;
@@ -115,19 +116,27 @@ window.onload = function (){
 
                 let spcantidad=document.createElement("span");
              spcantidad.textContent=1;
-             spcantidad.classList.add("cantidad");
+             spcantidad.classList.add(`${nombrejuego.replaceAll(" ","")}cantidad`);
 
+             
              productocarrito.appendChild(myimg);
              productocarrito.appendChild(spnombre);
+             productocarrito.innerHTML+=`<span>Precio:</span>`;
              productocarrito.appendChild(spprecio);
+             productocarrito.innerHTML+=`<span>Cantidad:</span>`;
              productocarrito.appendChild(spcantidad);
-             divcarrito.appendChild(productocarrito);
+             divproductos.appendChild(productocarrito);
+            //  divcarrito.appendChild(divproductos);
+             productocarrito.innerHTML+=`<i class="fa-solid fa-file-excel"></i>`;
 
         }
-       
+        let spnumeroelementos=document.querySelector(".numeroelementos");
+        let contadorCantidad=0
          for ([juego,objeto] of misproductos){
-             console.log(juego+" "+objeto.precio);
+             console.log(juego+" "+objeto.precio+" "+objeto.cantidad);
+             contadorCantidad+=objeto.cantidad;
          }
+        spnumeroelementos.textContent=contadorCantidad;
 
         // localStorage.setItem('miCarro', misproductos);
         // let prueba = localStorage.getItem('miCarro')
