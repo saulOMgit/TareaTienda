@@ -74,6 +74,7 @@ window.onload = function (){
         
         let nombrejuego=this.parentNode.children[0].textContent;
         var preciojuego=this.parentNode.children[3].textContent;
+        let caratula=this.parentNode.parentNode.children[0].children[0].src;
         
         preciojuego=preciojuego.substring(0,preciojuego.length-1);
 
@@ -84,16 +85,44 @@ window.onload = function (){
         let juegocomprado = {
             nombre: nombrejuego,
             precio:preciojuego,
-            cantidad:0
+            cantidad:1
         }
 
         // console.log(juegocomprado.nombre+" "+juegocomprado.precio);
+        
         if (misproductos.has(nombrejuego)){
             let datosanteriores= misproductos.get(nombrejuego).precio;
             juegocomprado.precio+=datosanteriores;
+            
+            juegocomprado.cantidad=misproductos.get(nombrejuego).cantidad+1;
+            
             misproductos.set(nombrejuego,juegocomprado);
+            let spcantidad2=document.querySelector(".cantidad");
+            spcantidad2.textContent=parseInt(spcantidad2.textContent)+1;
         } else{
              misproductos.set(nombrejuego,juegocomprado);
+
+             let productocarrito=document.createElement("div");
+             productocarrito.classList.add("productocarrito");
+             let myimg=document.createElement("img");
+                myimg.src=caratula;
+             let spnombre=document.createElement("span");
+             spnombre.textContent=nombrejuego;
+
+             let spprecio=document.createElement("span");
+             spprecio.textContent=juegocomprado.precio;
+             
+
+                let spcantidad=document.createElement("span");
+             spcantidad.textContent=1;
+             spcantidad.classList.add("cantidad");
+
+             productocarrito.appendChild(myimg);
+             productocarrito.appendChild(spnombre);
+             productocarrito.appendChild(spprecio);
+             productocarrito.appendChild(spcantidad);
+             divcarrito.appendChild(productocarrito);
+
         }
        
          for ([juego,objeto] of misproductos){
@@ -111,9 +140,9 @@ window.onload = function (){
 
     let botonCarrito=document.querySelector(".refcarrito")
     botonCarrito.addEventListener("click",muestraCarrito);
-
+    let divcarrito=document.querySelector(".divcarrito");
     function muestraCarrito(){
-        let divcarrito=document.querySelector(".divcarrito");
+       
         divcarrito.classList.toggle("divcarritoin");
     }
 }
