@@ -127,7 +127,8 @@ window.onload = function (){
              productocarrito.appendChild(spcantidad);
              divproductos.appendChild(productocarrito);
             //  divcarrito.appendChild(divproductos);
-             productocarrito.innerHTML+=`<i class="fa-solid fa-file-excel"></i>`;
+             productocarrito.innerHTML+=`<i class="fa-solid fa-file-excel quitar"></i>`;
+        //    let iQuitar= document.querySelector(".quitar").addEventListener("click",quitarJuego);
 
         }
         let spnumeroelementos=document.querySelector(".numeroelementos");
@@ -145,8 +146,13 @@ window.onload = function (){
         //      console.log(juego+" "+objeto.precio);
         //  }
 
+        eventoQuitar();
+
     }
 
+   
+
+    //funcionalidad de desplegar/plegar el div de carrito
     let botonCarrito=document.querySelector(".refcarrito")
     botonCarrito.addEventListener("click",muestraCarrito);
     let divcarrito=document.querySelector(".divcarrito");
@@ -154,4 +160,20 @@ window.onload = function (){
        
         divcarrito.classList.toggle("divcarritoin");
     }
+
+    //funcinalidad de quitar producto
+
+    function eventoQuitar(){
+        let iQuitar= document.querySelectorAll(".quitar");
+         iQuitar.forEach((botones) => {
+             botones.addEventListener("click",quitarJuego);
+         }) 
+    }
+    
+    function quitarJuego(){
+        let nombrejuego=this.parentNode.children[1].textContent;
+       misproductos.delete(nombrejuego);
+       this.parentNode.remove();
+    }
+
 }
