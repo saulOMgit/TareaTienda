@@ -1,6 +1,6 @@
 window.onload = function (){
     let divcontenido=document.querySelector(".contenido");
-
+    
     async function cargaJuegos(){
         const response= await fetch("./scripts/juegos.json");
         const juegos=await response.json();
@@ -91,8 +91,8 @@ window.onload = function (){
         // console.log(juegocomprado.nombre+" "+juegocomprado.precio);
         
         if (misproductos.has(nombrejuego)){
-            let datosanteriores= misproductos.get(nombrejuego).precio;
-            juegocomprado.precio+=datosanteriores;
+            // let datosanteriores= misproductos.get(nombrejuego).precio;
+            // juegocomprado.precio+=datosanteriores;
             
             juegocomprado.cantidad=misproductos.get(nombrejuego).cantidad+1;
             
@@ -111,7 +111,7 @@ window.onload = function (){
              spnombre.classList.add("titulocarrito");
 
              let spprecio=document.createElement("span");
-             spprecio.textContent=juegocomprado.precio;
+             spprecio.textContent=`${juegocomprado.precio}€`;
              
 
                 let spcantidad=document.createElement("span");
@@ -131,26 +131,25 @@ window.onload = function (){
         //    let iQuitar= document.querySelector(".quitar").addEventListener("click",quitarJuego);
 
         }
-        let spnumeroelementos=document.querySelector(".numeroelementos");
-        let contadorCantidad=0
+        
+        let contadorCantidad=0;
+        let contadorPrecio=0;
          for ([juego,objeto] of misproductos){
              console.log(juego+" "+objeto.precio+" "+objeto.cantidad);
+             contadorPrecio+=objeto.precio*objeto.cantidad;
              contadorCantidad+=objeto.cantidad;
          }
         spnumeroelementos.textContent=contadorCantidad;
-
-        // localStorage.setItem('miCarro', misproductos);
-        // let prueba = localStorage.getItem('miCarro')
-        // console.log(typeof prueba)
-        //  for ([juego,objeto] of prueba){
-        //      console.log(juego+" "+objeto.precio);
-        //  }
+        
+        
+        cantidadtotal.textContent=contadorPrecio;
+       
 
         eventoQuitar();
 
     }
-
-   
+    let spnumeroelementos=document.querySelector(".numeroelementos");
+    let cantidadtotal=document.querySelector(".pagame");
 
     //funcionalidad de desplegar/plegar el div de carrito
     let botonCarrito=document.querySelector(".refcarrito")
@@ -172,8 +171,28 @@ window.onload = function (){
     
     function quitarJuego(){
         let nombrejuego=this.parentNode.children[1].textContent;
+        let cantidadquitada=parseInt(this.previousElementSibling.textContent);
+        let preciojuego=misproductos.get(nombrejuego).precio*cantidadquitada;
+        spnumeroelementos.textContent=parseInt(spnumeroelementos.textContent)-cantidadquitada;
+        // cantidadtotal.textContent=parseFloat(cantidadtotal.textContent-preciojuego,2);
+        cantidadtotal.textContent=Math.round(parseFloat(cantidadtotal.textContent-preciojuego,2)*100)/100;
+        console.log(cantidadquitada)
        misproductos.delete(nombrejuego);
        this.parentNode.remove();
     }
 
+    let btnfactura=document.querySelector(".botfactura").addEventListener("click",factura);
+    function factura()
+    {
+         localStorage.clear();
+        for ([nombre,objeto] of misproductos){
+            localStorage.setItem(nombre, JSON.stringify(objeto));
+        }
+        window.location.href="factura.html";
+        alert(JSON.stringify(localStorage,null,2))
+
+        //    for ([juego,objeto] of prueba){
+        //        console.log(juego);
+        //    }
+    }
 }

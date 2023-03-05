@@ -1,0 +1,59 @@
+.contenedor {
+    max-width: 800px;
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #eee;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    font-size: 16px;
+    line-height: 24px;
+    font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+    color: #555;
+}
+.contenedor table {
+    width: 100%;
+    line-height: inherit;
+    text-align: left;
+}
+.contenedor table td {
+    padding: 5px;
+    vertical-align: top;
+}
+
+.contenedor table tr td:nth-child(2) {
+    text-align: right;
+}
+
+.contenedor table tr.top table td {
+    padding-bottom: 20px;
+}
+
+.contenedor table tr.top table td.logo {
+    font-size: 45px;
+    line-height: 45px;
+    color: #333;
+}
+
+.contenedor table tr.datostienda table td {
+    padding-bottom: 40px;
+}
+
+.contenedor table tr.cabecera td {
+    background: #eee;
+    border-bottom: 1px solid #ddd;
+    font-weight: bold;
+}
+
+.contenedor table tr.details td {
+    padding-bottom: 20px;
+}
+
+.contenedor table tr.productos td {
+    border-bottom: 1px solid #eee;
+}
+
+
+
+.contenedor table tr.total td:nth-child(3) {
+    border-top: 2px solid #eee;
+    font-weight: bold;
+}
