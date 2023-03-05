@@ -189,7 +189,7 @@ window.onload = function (){
             localStorage.setItem(nombre, JSON.stringify(objeto));
         }
         window.location.href="factura.html";
-        alert(JSON.stringify(localStorage,null,2))
+        
 
         //    for ([juego,objeto] of prueba){
         //        console.log(juego);
