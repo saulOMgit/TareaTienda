@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
+/* Russo One */
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+/* Permanent Marker */
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 *{
     margin: 0;
     padding: 0;
@@ -183,6 +187,12 @@
     width: 50%;
     height: 50px;
   }
+  .gigia{
+    font-family: 'Russo One', sans-serif;
+  }
+  .games{
+    font-family: 'Permanent Marker', cursive;
+  }
   
   @media only screen and (max-width: 600px) {
      
@@ -190,7 +200,8 @@
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         align-items: center;
-  justify-items: center; 
+        justify-items: center; 
+        min-width: 350px;
     }
       
     .juego{
@@ -202,5 +213,13 @@
     nav :not(:first-child){
         float: right;
         display: block;
+    }
+
+    .divcarrito{
+      width: 300px;
+      
+    }
+    .divcarritoin{
+      transform: translateX(-188px);
     }
   }
