@@ -57,3 +57,13 @@
     border-top: 2px solid #eee;
     font-weight: bold;
 }
+
+table{
+    position: relative;
+    z-index: 1;
+}
+.contenedor{
+    /* height: 370px; */
+    /* height: fit-content; */
+    background-image: url(../img/svgfactura.png);
+}

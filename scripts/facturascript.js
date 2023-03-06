@@ -49,16 +49,16 @@ window.onload = function(){
                 margin:0.5,
                 filename: "CompraCompletada.pdf",
                 image:{
-                    type:"jpeg",
+                    type:"png",
                     quality:0.9
                 },
                 html2canvas: {
-                    scale: 2,
+                    scale: 3,
                     letterRendering: true,
                 },
                 jsPDF: {
                     unit: "in",
-                    format: "a3",
+                    format: "a4",
                     orientation: "landscape",
                 }
             })

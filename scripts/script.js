@@ -181,7 +181,7 @@ window.onload = function (){
        this.parentNode.remove();
     }
 
-    let btnfactura=document.querySelector(".botfactura").addEventListener("click",factura);
+    document.querySelector(".botfactura").addEventListener("click",factura);
     function factura()
     {
          localStorage.clear();
