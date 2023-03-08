@@ -80,3 +80,28 @@ table{
 .games{
     font-family: 'Permanent Marker', cursive;
   }
+
+.contenidofooter{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    gap: 40px;
+  }
+
+.volver, .imprint{
+    font-size: 20px;
+    background-color: rgba(236, 157, 236, 0.798);
+    padding: 5px;
+    border-radius: 20px;
+}
+
+.imprint:hover, .volver:hover{
+    background-color: violet;
+    transition: all .5s;
+}
+
+.contenidofooter a{
+    text-decoration: none;
+}
