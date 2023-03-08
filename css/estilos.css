@@ -1,11 +1,16 @@
+/* Importamos fuentes de Google Fonts para darle estilo a nuestros textos */
 @import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
 /* Russo One */
 @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
 /* Permanent Marker */
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+/* Le aplicamos a todo un estilo en concreto */
 *{
     font-family: 'Barlow', sans-serif;
 }
+
+/* Definimos las areas de nuestro grid */
 .titulo{
     grid-area: titulo;
 }
@@ -13,11 +18,11 @@
 .enlace{
     grid-area: enlace;
 }
+
+/* Definimos el contenedor contenido como display grid, con el numero de columnas y lo que ocupan sus areas */
 .contenido{
-    /* https://developer.mozilla.org/es/docs/Web/CSS/CSS_Grid_Layout */
+   
     display: grid;
-    /* grid-template-columns: [first] 40px [col2] 200px [colcentro] auto [col4-start] 200px [five] 40px [end];
-    grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-line]; 100px 100px 100px 100px*/
     height: 25%;   
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr);
@@ -29,7 +34,7 @@
         ". . enlace .";
 
     /* prueba centrado */
-        position: absolute; /*Can also be `fixed`*/
+        position: absolute;
         left: 50px;
         right: 50px;
         top: 50px;
@@ -39,6 +44,7 @@
         
 }
 
+/* Ponemos de color de fondo un degradado */
 body{
     background: rgb(2,0,36);
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(133,52,255,1) 46%, rgba(255,255,255,1) 100%); 
@@ -47,7 +53,7 @@ body{
 .contenido{
     background-color: rgba(192, 133, 240, 0.163);
 }
-
+/* Damos un poco de estilo a nuestro enlace */
 .enlace a{
     font-size: 24px;
     background-color: blueviolet;
@@ -55,12 +61,15 @@ body{
     text-decoration: none;
     /* margin-top: 150px; */
 }
+
+/* Con las 2 siguientes propiedades construimos nuestro logo */
 .gigia{
     font-family: 'Russo One', sans-serif;
   }
   .games{
     font-family: 'Permanent Marker', cursive;
   }
+  /* un estilo basico para que sea responsive */
 @media only screen and (max-width: 600px) {
     .contenido{
         height: 100vh;

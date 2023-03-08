@@ -3,11 +3,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
 /* Permanent Marker */
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+/* Reseteamos los estilos y le damos a todo el documento una fuente no predeterminada */
 *{
     margin: 0;
     padding: 0;
     font-family: 'Barlow', sans-serif;
 }
+/* Quitamos  el overflow horizontal */
 .todo{
     overflow-x: hidden;
 } 
@@ -21,7 +24,7 @@
     perspective: 1000px;
     
 }
-
+/* posicionamos nuestro contenido */
 .cartaposicion{
     position: relative;
     width: 100%;
@@ -64,13 +67,8 @@
     font-size: 2em;
 }
 
-/* grid */
-
-/* .barra{
-    grid-area:barra;
-} */
-.contenido{
-    /* https://developer.mozilla.org/es/docs/Web/CSS/CSS_Grid_Layout */
+/* Definimos como grid donde vamos a mostrar */
+.contenido{    
     display: grid;
     width: 100%;
     grid-template-columns: repeat(4 , 1fr);
@@ -78,17 +76,18 @@
     background-color: #2196F3;
     padding: 10px;
     justify-content: center;
+    align-items: center;
   }
 
   /* Barra responsive */
   nav{
     background-color: #333;
     overflow: hidden;
+    display: flex;
+    justify-content: space-around;
   }
-
+  /* damos estilos a los enlaces */
   nav a{
-    float: left;
-    display: block;
     color: #f2f2f2;
     text-align: center;
     padding: 14px 16px;
@@ -131,30 +130,35 @@
     left: 70%;
     width: 25%;
     height: 50%;
-    background-color: tomato;
+    background-color: rgb(115, 13, 248);
     z-index: 2;
+    /* Colocamos el carrito fuera de la vista */
     transform: translateX(-400%);
     transition: .5s ease-out;
-
+    border: 2px solid black;
     overflow-y: scroll;
   }
-
+  /* Clase para mostrar el curriculum */
   .divcarritoin{
     transform: translateX(0px);
   }
 
   /* Productos del carrito */
  
+  /* Definimos cada producto como grid */
   .productocarrito{
-    /* display: flex; */
     display: grid;
     grid-template-columns: 40px 1fr 1fr 1fr;
     gap: 2px;
     padding-bottom: 4px;
     
     font-size: 18px;
+    border-bottom: #3333330b 3px solid;
+    margin-bottom: 1px;
+    font-weight: 600;
    
   }
+  /* Esta vez no utilizaremos area */
   .titulocarrito{
     grid-column: 2/5;
     
@@ -177,7 +181,7 @@
     width: auto;
     
   }
-  
+  /* Estilo del boton de factura */
   .botfactura{
     background-color: violet;
     color: white;
@@ -187,13 +191,53 @@
     width: 50%;
     height: 50px;
   }
+  .botfactura:hover{
+    background-color: rgb(232, 72, 232);
+    transition: all 0.9s;
+  }
+
+  /* Estilos del logo */
   .gigia{
     font-family: 'Russo One', sans-serif;
   }
   .games{
     font-family: 'Permanent Marker', cursive;
-  }
+  }  
   
+  .divcantidadtotal{
+    font-weight: 600;
+  }
+/* Primera media query para pantallas grandes pero no desktop (portatiles) */
+  @media only screen and (max-width: 1200px) {
+     
+    .contenido {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        align-items: center;
+        justify-items: center; 
+        min-width: 350px;
+    }
+    .divcarrito{
+      width: 300px;
+      
+    }
+  }
+/* Media Query para tablets */
+  @media only screen and (max-width: 900px) {
+     
+    .contenido {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        justify-items: center; 
+        min-width: 350px;
+    }
+
+    .divcarritoin{
+      transform: translateX(-92px);
+    }
+  }
+  /* Media Query para moviles */
   @media only screen and (max-width: 600px) {
      
     .contenido {
@@ -207,17 +251,6 @@
     .juego{
         margin-left: 0 auto;
         margin-right: 0 auto;
-    }
-
-    /* Intento barra responsive */
-    nav :not(:first-child){
-        float: right;
-        display: block;
-    }
-
-    .divcarrito{
-      width: 300px;
-      
     }
     .divcarritoin{
       transform: translateX(-188px);

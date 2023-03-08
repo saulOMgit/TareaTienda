@@ -2,6 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
 /* Permanent Marker */
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+/* Aqui nada, estilos muy basicos sobre el ancho de lo que vamos a imprimir */
 .contenedor {
     max-width: 800px;
     margin: auto;
@@ -13,6 +15,8 @@
     font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
     color: #555;
 }
+
+/* Y estilos pertenecientes a la tabla */
 .contenedor table {
     width: 100%;
     line-height: inherit;
@@ -67,8 +71,6 @@ table{
     z-index: 1;
 }
 .contenedor{
-    /* height: 370px; */
-    /* height: fit-content; */
     background-image: url(../img/svgfactura.png);
 }
 

@@ -1,4 +1,5 @@
 window.onload = function(){
+    //Necesitamos un mapa para volcar los datos del Local Storage
     miMapa= new Map();
     let mitabla=document.querySelector("table");
     //Obtenemos los datos del carrito de la compra
@@ -8,6 +9,7 @@ window.onload = function(){
             let valor=JSON.parse(localStorage[clave]);
             miMapa.set(clave,valor);
         }
+        //Para cada uno de los productos pintamos nombre, cantidad y precio en una fila de la tabla por producto
         let cantidadpagada=0
         for([clave, valor]of miMapa){
             console.log(clave+valor.nombre);
@@ -33,7 +35,6 @@ window.onload = function(){
         
         let filatotales=document.createElement("tr");
         filatotales.classList.add("total");
-        let celdavacia=document.createElement("td");
         let celdatotales=document.createElement("td");
         celdatotales.textContent=cantidadpagada+"€";
         mitabla.appendChild(filatotales);

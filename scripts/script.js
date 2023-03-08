@@ -1,6 +1,6 @@
 window.onload = function (){
     let divcontenido=document.querySelector(".contenido");
-    
+    // Cargamos el contenido de nuestro Json
     async function cargaJuegos(){
         const response= await fetch("./scripts/juegos.json");
         const juegos=await response.json();
@@ -9,7 +9,7 @@ window.onload = function (){
     }
 
     function imprimir(juegos){
-
+        //Para cada juego, metemos toda su informacion en las cartas
         for(let juego of juegos){
             let divjuego=document.createElement("div");
             divjuego.className="juego";
@@ -65,13 +65,12 @@ window.onload = function (){
     }
 
     cargaJuegos();
-    // misproductos = localStorage.getItem('miCarro');
-    // console.log(misproductos);
-    // if (!misproductos){
+    
+    //Creamos un mapa donde iran guardados los articulos comprados
     misproductos= new Map();
-    //}
+    
     function comprar(){
-        
+        //Guardo via traversing parametros que me van ayudar mas adelante
         let nombrejuego=this.parentNode.children[0].textContent;
         var preciojuego=this.parentNode.children[3].textContent;
         let caratula=this.parentNode.parentNode.children[0].children[0].src;
@@ -79,20 +78,17 @@ window.onload = function (){
         preciojuego=preciojuego.substring(0,preciojuego.length-1);
 
         preciojuego = parseFloat(preciojuego.replace(",","."),2);
-        console.log(preciojuego);
         
-
+        
+        //construimos un objeto que utilizaremos mas adelante para el tema factura
         let juegocomprado = {
             nombre: nombrejuego,
             precio:preciojuego,
             cantidad:1
         }
-
-        // console.log(juegocomprado.nombre+" "+juegocomprado.precio);
         
-        if (misproductos.has(nombrejuego)){
-            // let datosanteriores= misproductos.get(nombrejuego).precio;
-            // juegocomprado.precio+=datosanteriores;
+        //Si el jeugo ha sido comprado alguna vez se actualiza la cantidad
+        if (misproductos.has(nombrejuego)){           
             
             juegocomprado.cantidad=misproductos.get(nombrejuego).cantidad+1;
             
@@ -100,6 +96,7 @@ window.onload = function (){
             let spcantidad2=document.querySelector(`.${nombrejuego.replaceAll(" ","")}cantidad`);
             spcantidad2.textContent=parseInt(spcantidad2.textContent)+1;
         } else{
+            //si no, se guarda la informacion
              misproductos.set(nombrejuego,juegocomprado);
             let divproductos=document.querySelector(".productos");
              let productocarrito=document.createElement("div");
@@ -126,12 +123,11 @@ window.onload = function (){
              productocarrito.innerHTML+=`<span>Cantidad:</span>`;
              productocarrito.appendChild(spcantidad);
              divproductos.appendChild(productocarrito);
-            //  divcarrito.appendChild(divproductos);
+        
              productocarrito.innerHTML+=`<i class="fa-solid fa-file-excel quitar"></i>`;
-        //    let iQuitar= document.querySelector(".quitar").addEventListener("click",quitarJuego);
-
         }
         
+        //pintamos la cantidad de objetos y su coste
         let contadorCantidad=0;
         let contadorPrecio=0;
          for ([juego,objeto] of misproductos){
@@ -144,7 +140,7 @@ window.onload = function (){
         
         cantidadtotal.textContent=contadorPrecio;
        
-
+         //Damos funcion a las papeleras de eliminacion
         eventoQuitar();
 
     }
@@ -168,7 +164,10 @@ window.onload = function (){
              botones.addEventListener("click",quitarJuego);
          }) 
     }
-    
+    // Esta funcion hace 3 cosas diferentes
+        //Eliminar el contenido del mapa
+        //Eliminar el producto visualmente
+        //Eliminar la cantidad de unidades como las de el valor de los productos eliminados
     function quitarJuego(){
         let nombrejuego=this.parentNode.children[1].textContent;
         let cantidadquitada=parseInt(this.previousElementSibling.textContent);
@@ -176,23 +175,21 @@ window.onload = function (){
         spnumeroelementos.textContent=parseInt(spnumeroelementos.textContent)-cantidadquitada;
         // cantidadtotal.textContent=parseFloat(cantidadtotal.textContent-preciojuego,2);
         cantidadtotal.textContent=Math.round(parseFloat(cantidadtotal.textContent-preciojuego,2)*100)/100;
-        console.log(cantidadquitada)
+
        misproductos.delete(nombrejuego);
        this.parentNode.remove();
     }
 
+    //Damos funcion al boton de generar factura
     document.querySelector(".botfactura").addEventListener("click",factura);
     function factura()
     {
+        //limpiamos el localstorage
          localStorage.clear();
         for ([nombre,objeto] of misproductos){
+            //convertimos su contenido a JSON para trabajar con el mas adelante
             localStorage.setItem(nombre, JSON.stringify(objeto));
         }
         window.location.href="factura.html";
-        
-
-        //    for ([juego,objeto] of prueba){
-        //        console.log(juego);
-        //    }
     }
 }
