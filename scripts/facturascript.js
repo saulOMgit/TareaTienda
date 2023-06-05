@@ -9,7 +9,7 @@ window.onload = function(){
             let valor=JSON.parse(localStorage[clave]);
             miMapa.set(clave,valor);
         }
-        //Para cada uno de los productos pintamos nombre, cantidad y precio en una fila de la tabla por producto
+        //Para cada uno de los productos pintamos nombre, cantidad y precio en una fila de la tabla por producto.
         let cantidadpagada=0
         for([clave, valor]of miMapa){
             console.log(clave+valor.nombre);
